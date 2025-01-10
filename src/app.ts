@@ -4,6 +4,7 @@ import productoRouter from './routes/producto.route';
 import usuarioRouter from './routes/usuario.route';
 import categoriaRouter from './routes/categoria.route';
 import rolRouter from './routes/rol.route';
+import favoritoRouter from './routes/favorito.route';
 import promocionRouter from './routes/promocion.route';
 import { AppDataSource } from './config/db.config';
 
@@ -21,6 +22,7 @@ app.use('/api/v1/productos',productoRouter);
 app.use('/api/v1/usuarios',usuarioRouter);
 app.use('/api/v1/categorias',categoriaRouter);
 app.use('/api/v1/roles',rolRouter);
+app.use('/api/v1/favoritos',favoritoRouter);
 app.use('/api/v1/promociones',promocionRouter);
 
 

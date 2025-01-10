@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Rol } from "./rol";
+import { Favorito } from "./favorito";
 
 
 
@@ -45,4 +46,8 @@ export class Usuario {
 
     @CreateDateColumn({ name: 'fecha_creacion_auditoria' })
     fechaCreacionAuditoria: Date;
+
+    @OneToMany(() => Favorito, (favorito) => favorito.usuario)
+    favoritos: Favorito[];
+
 }

@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Categoria } from "./categoria";
 import { Promocion } from "./promocion";
+import { Favorito } from "./favorito";
 
 
 
@@ -40,4 +41,8 @@ export class Producto{
     
     @OneToMany(()=>Promocion, (promocion) => promocion.producto)
     promociones: Promocion[];
+
+    @OneToMany(() => Favorito, (favorito) => favorito.producto)
+    favoritos: Favorito[];
+
 }

@@ -5,6 +5,7 @@ import { Usuario } from "../entities/usuario";
 import { Categoria } from "../entities/categoria";
 import { Rol } from "../entities/rol";
 import { Promocion } from "../entities/promocion";
+import { Favorito } from "../entities/favorito";
 
 
 export const AppDataSource = new DataSource({
@@ -15,6 +16,6 @@ export const AppDataSource = new DataSource({
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_DATABASE,
-    entities: [Producto,Usuario,Categoria,Rol,Promocion],
+    entities: [Producto,Usuario,Categoria,Rol,Promocion,Favorito],
     
 });
