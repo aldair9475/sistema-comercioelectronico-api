@@ -4,6 +4,7 @@ import productoRouter from './routes/producto.route';
 import usuarioRouter from './routes/usuario.route';
 import categoriaRouter from './routes/categoria.route';
 import rolRouter from './routes/rol.route';
+import promocionRouter from './routes/promocion.route';
 import { AppDataSource } from './config/db.config';
 
 const app: Application = express();
@@ -20,6 +21,8 @@ app.use('/api/v1/productos',productoRouter);
 app.use('/api/v1/usuarios',usuarioRouter);
 app.use('/api/v1/categorias',categoriaRouter);
 app.use('/api/v1/roles',rolRouter);
+app.use('/api/v1/promociones',promocionRouter);
+
 
 export const startServer = async () => {
     try {

@@ -1,5 +1,7 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Categoria } from "./categoria";
+import { Promocion } from "./promocion";
+
 
 
 
@@ -34,4 +36,8 @@ export class Producto{
 
     @CreateDateColumn({name: 'fecha_creacion_auditoria'})
     fechaCreacionAuditoria: Date;
+
+    
+    @OneToMany(()=>Promocion, (promocion) => promocion.producto)
+    promociones: Promocion[];
 }
