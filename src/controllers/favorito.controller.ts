@@ -3,7 +3,7 @@ import * as favoritoService from '../services/favorito.service';
 import { Favorito } from '../entities/favorito';
 import { Message } from '../enums/messages';
 import { BaseResponse } from '../shared/base-response';
-import { insertarFavoritoSchema } from '../validators/favorito.schema';
+import { insertarFavoritoSchema, actualizarFavoritoSchema } from '../validators/favorito.schema';
 
 
 export const insertarFavorito = async (req: Request, res: Response) => {
@@ -54,6 +54,11 @@ export const obtenerFavorito = async (req: Request, res: Response) => {
 export const actualizarFavorito = async (req: Request, res: Response) => {
   try {
     const { idFavorito } = req.params;
+    const { error } = actualizarFavoritoSchema.validate(req.body);
+    if (error) {
+      res.status(400).json(BaseResponse.error(error.message, 400));
+      return;
+    }
     const favorito: Partial<Favorito> = req.body;
     if (!(await favoritoService.obtenerFavorito(Number(idFavorito)))) {
       res.status(404).json(BaseResponse.error(Message.NOT_FOUND, 404));
