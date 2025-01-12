@@ -1,6 +1,8 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Rol } from "./rol";
 import { Favorito } from "./favorito";
+import { Opinion } from "./opinion";
+import { Pedido } from "./pedido";
 
 
 
@@ -52,5 +54,12 @@ export class Usuario {
 
     @OneToMany(() => Favorito, (favorito) => favorito.usuario)
     favoritos: Favorito[];
+
+    @OneToMany(() => Opinion, (opinion) => opinion.usuario)
+    opiniones: Opinion[];
+
+    @OneToMany(() => Pedido, (pedido) => pedido.usuario)
+    pedidos: Pedido[];
+
 
 }

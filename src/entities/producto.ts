@@ -2,6 +2,8 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, Pri
 import { Categoria } from "./categoria";
 import { Promocion } from "./promocion";
 import { Favorito } from "./favorito";
+import { Opinion } from "./opinion";
+import { PedidoDetalle } from "./pedido-detalle";
 
 
 
@@ -38,11 +40,17 @@ export class Producto{
     @CreateDateColumn({name: 'fecha_creacion_auditoria'})
     fechaCreacionAuditoria: Date;
 
-    
+    @OneToMany(() => Opinion, (opinion) => opinion.producto)
+    opiniones: Opinion[];
+
     @OneToMany(()=>Promocion, (promocion) => promocion.producto)
     promociones: Promocion[];
 
     @OneToMany(() => Favorito, (favorito) => favorito.producto)
     favoritos: Favorito[];
+
+    @OneToMany(() => PedidoDetalle, (pedidoDetalle) => pedidoDetalle.producto)
+    pedidosDetalles: PedidoDetalle[];
+
 
 }
