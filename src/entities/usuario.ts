@@ -26,8 +26,11 @@ export class Usuario {
     @Column({ name: 'fecha_nacimiento' })
     fechaNacimiento: Date;
 
-    @Column({ name: 'dni' })
-    dni: string;
+    @Column({ name: 'tipo_documento' })
+    tipoDocumento: string;
+
+    @Column({ name: 'numero_documento' })
+    numeroDocumento: string;
 
     @Column({ name: 'telefono' })
     telefono: string;
