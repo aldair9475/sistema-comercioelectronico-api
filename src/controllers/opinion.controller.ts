@@ -54,7 +54,7 @@ export const obtenerOpinion = async (req: Request, res: Response) => {
 export const actualizarOpinion = async (req: Request, res: Response) => {
   try {
     const { idOpinion } = req.params;
-    const { error } = insertarOpinionSchema.validate(req.body);
+    const { error } = actualizarOpinionSchema.validate(req.body);
     if (error) {
       res.status(400).json(BaseResponse.error(error.message, 400));
       return;
