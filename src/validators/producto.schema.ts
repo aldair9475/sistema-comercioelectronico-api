@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 export const insertarProductoSchema = Joi.object({
 
-    nombres: Joi.string()
+    nombre: Joi.string()
         .min(3)
         .max(100)
         .required(),
@@ -25,7 +25,7 @@ export const insertarProductoSchema = Joi.object({
         .min(0)
         .required(),
 
-    Categoria: Joi.object({
+    categoria: Joi.object({
         idCategoria: Joi.number()
             .integer()
             .required()
@@ -36,7 +36,7 @@ export const insertarProductoSchema = Joi.object({
 
 export const actualizarProductoSchema = Joi.object({
 
-    nombres: Joi.string()
+    nombre: Joi.string()
         .min(3)
         .max(100)
         .optional(),
