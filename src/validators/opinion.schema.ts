@@ -16,7 +16,14 @@ export const insertarOpinionSchema = Joi.object({
         idUsuario: Joi.number()
             .integer()
             .required()
+    }).required(),
+
+    producto: Joi.object({
+        idProducto: Joi.number()
+            .integer()
+            .required()
     }).required()
+
 
 });
 
