@@ -5,7 +5,7 @@ export const insertarOpinionSchema = Joi.object({
     calificacion: Joi.number()
         .min(0)
         .max(5)
-        .optional(),
+        .required(),
 
     comentario: Joi.string()
         .min(5)
@@ -35,6 +35,6 @@ export const actualizarOpinionSchema = Joi.object({
     usuario: Joi.object({
         idUsuario: Joi.number()
             .integer()
-            .required()
-    }).required()
+            .optional()
+    }).optional()
 });

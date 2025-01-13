@@ -39,7 +39,7 @@ export const actualizarProductoSchema = Joi.object({
     nombres: Joi.string()
         .min(3)
         .max(100)
-        .required(),
+        .optional(),
     descripcion: Joi.string()
         .min(5)
         .max(50)
@@ -47,16 +47,22 @@ export const actualizarProductoSchema = Joi.object({
     imagenUrl: Joi.string()
         .uri()
         .max(500)
-        .required(),
+        .optional(),
     precioUnitario: Joi.number()
         .positive()
         .precision(2)
         .greater(0)
-        .required(),
+        .optional(),
 
     stock: Joi.number()
         .integer()
         .min(0)
-        .required(),
+        .optional(),
+
+    Categoria: Joi.object({
+        idCategoria: Joi.number()
+            .integer()
+            .optional()
+    }).optional()
 
 });

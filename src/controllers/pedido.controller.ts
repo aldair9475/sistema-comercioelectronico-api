@@ -3,7 +3,7 @@ import { Pedido } from "../entities/pedido";
 import * as pedidoService from '../services/pedido.service';
 import { BaseResponse } from "../shared/base-response";
 import { Message } from "../enums/messages";
-
+import { insertarPedidoSchema, actualizarPedidoSchema } from '../validators/pedido.schema';
 
 
 
@@ -11,6 +11,11 @@ import { Message } from "../enums/messages";
 export const insertarPedido = async (req: Request, res: Response) => {
     try {
         console.log('insertarPedido')
+        const { error } = insertarPedidoSchema.validate(req.body);
+        if (error) {
+            res.status(400).json(BaseResponse.error(error.message, 400));
+            return;
+        }
         const pedido: Partial<Pedido> = req.body;
         const newPedido: Pedido = await pedidoService.insertarPedido(pedido);
         res.json(BaseResponse.success(newPedido, Message.INSERTADO_OK));
@@ -53,6 +58,11 @@ export const obtenerPedido = async (req: Request, res: Response) => {
 export const actualizarPedido = async (req: Request, res: Response) => {
     try {
         const { idPedido } = req.params;
+        const { error } = actualizarPedidoSchema.validate(req.body);
+        if (error) {
+            res.status(400).json(BaseResponse.error(error.message, 400));
+            return;
+        }
         const pedido: Partial<Pedido> = req.body;
         if (!(await pedidoService.obtenerPedido(Number(idPedido)))) {
             res.status(404).json(BaseResponse.error(Message.NOT_FOUND, 404));
