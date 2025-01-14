@@ -21,6 +21,7 @@ export const insertarProductoSchema = Joi.object({
         .required(),
 
     stock: Joi.number()
+        .positive()
         .integer()
         .min(0)
         .required(),
